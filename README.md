@@ -8,7 +8,7 @@
   - 地面、壁の作成: Plane、Cubeをここでは使用  
   - Materialファイル: Objectの色などを決定  
   - Objectの回転  
-  - StaticなObjectとして登録  
+  - **StaticなObjectとして登録**  
 
 
 3. [プレイヤーの移動](https://unity3d.com/jp/learn/tutorials/projects/hajiuni/moving-the-player?playlist=45986)  
@@ -44,10 +44,12 @@
     - Item Object を Prefab フォルダに保存  
     - Scene View に Drag & Drop  
   - 接触判定  
-    - `OnTriggerEnter()`  
+    - `OnTriggerEnter(Collider)`  
       Enter(接触)によってTrigger(発生)されるイベント  
-    - `OnCollisionEnter()`  
+    - `OnCollisionEnter(Collision)`  
       衝突判定をもつObjectとの接触によって発生するイベント  
+      > [Collider](https://docs.unity3d.com/ja/current/ScriptReference/Collider.html), [Collision](https://docs.unity3d.com/ja/current/ScriptReference/Collision.html) 共にUnityEngine の Class
+
   - Itemの接触判定を変更  
     Item->Inspector より Is Trigger にチェック  
   - 対象を設定  
@@ -97,7 +99,24 @@
 7. [ゲームのクリアを追加](https://unity3d.com/jp/learn/tutorials/projects/hajiuni/ending-the-game?playlist=45986)
   Text `YOU WIN` を Item が0になったら表示
 8. [障害物とリスタート](https://unity3d.com/jp/learn/tutorials/projects/hajiuni/adding-obstacles-and-restart?playlist=45986)
-  - 
+  壁同様に Material, Cube を生成  
+  Emission: 物体を発光させる  
+  `Emission 1.3 は Emission -> Color -> Intensity`  
+  Static Object  
+  Prefab  
+  - DangerWall.cs
+    ```
+    void OnCollisionEnter (Collision hit) {
+      // 接触対象はPlayerタグですか？
+      if (hit.gameObject.CompareTag ("Player")) {
+        // 現在のシーン番号を取得
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // 現在のシーンを再読込する
+        SceneManager.LoadScene(sceneIndex);
+      }
+    }
+    ```
+    
 ***  
 links  
 [Documentation](https://docs.unity3d.com/ja/current/Manual/index.html)  
