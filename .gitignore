@@ -6,6 +6,7 @@ Obj/
 Build/
 Builds/
 Logs/
+.DS_Store
 
 # Never ignore Asset meta data
 !Assets/**/*.meta
