@@ -43,6 +43,28 @@
   - 量産するために  
     - Item Object を Prefab フォルダに保存  
     - Scene View に Drag & Drop  
+  - 接触判定  
+    - `OnTriggerEnter()`  
+      Enter(接触)によってTrigger(発生)されるイベント  
+    - `OnCollisionEnter()`  
+      衝突判定をもつObjectとの接触によって発生するイベント  
+  - Itemの接触判定を変更  
+    Item->Inspector より Is Trigger にチェック  
+  - 対象を設定  
+    ```
+      void OnTriggerEnter (Collider hit) {
+        if (hit.CompareTag ("Player")) {
+          // 何らかの処理
+        }
+      }
+    ```  
+    引数のhitに接触対象の情報、上記コードではTagがPlayerなら処理  
+  > タグの設定方法  
+  > 対象とするObjectのInspectorよりTagを変更
+
+  - 接触時に削除する  
+    `Destroy(gameObject)`  
+
 ***  
 links  
 [Documentation](https://docs.unity3d.com/ja/current/Manual/index.html)  
