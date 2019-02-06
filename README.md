@@ -13,7 +13,7 @@
 
 3. [プレイヤーの移動](https://unity3d.com/jp/learn/tutorials/projects/hajiuni/moving-the-player?playlist=45986)  
   - Playerの追加: Sphereをここでは使用  
-  - コンポーネントF  
+  - コンポーネント  
   Playerの部品。当たり判定や物理演算をPlayerに設定している。  
   **C#で書かれた(実装する)Scriptによって制御するコンポーネントでも制御できる。**  
   - Script  
@@ -59,9 +59,8 @@
       }
     ```  
     引数のhitに接触対象の情報、上記コードではTagがPlayerなら処理  
-
-  > タグの設定方法  
-  > 対象とするObjectのInspectorよりTagを変更
+    > タグの設定方法  
+    > 対象とするObjectのInspectorよりTagを変更
 
   - 接触時に削除する  
     `Destroy(gameObject)`  
@@ -73,7 +72,8 @@
   - Canvas設定  
     Hierarchy: Create -> UI -> Canvas  
     CanvasScaler -> UI Scale Mode を Scale With Screen Size  
-  - Text設定
+  - Text設定  
+    Canvas の直下に作られる  
     Hierarchy: Create -> UI -> Text  
     ReactTransform, Text Component をゲームに合うように設定  
   - GameController の作成  
@@ -93,6 +93,11 @@
   > Tagの追加  
   > Menu Bar -> ProjectSettings -> Tag And Layers より設定  
   > これ以降 Inspecter にそのタグが出現、選択可能に
+
+7. [ゲームのクリアを追加](https://unity3d.com/jp/learn/tutorials/projects/hajiuni/ending-the-game?playlist=45986)
+  Text `YOU WIN` を Item が0になったら表示
+8. [障害物とリスタート](https://unity3d.com/jp/learn/tutorials/projects/hajiuni/adding-obstacles-and-restart?playlist=45986)
+  - 
 ***  
 links  
 [Documentation](https://docs.unity3d.com/ja/current/Manual/index.html)  
