@@ -66,6 +66,7 @@
   - 接触時に削除する  
     `Destroy(gameObject)`  
 
+
 6. [ゲームのUIを追加](https://unity3d.com/jp/learn/tutorials/projects/hajiuni/creating-the-game-ui?playlist=45986)
   - **全てのUIに共通  
     Hierarchy: Create -> UI**  
