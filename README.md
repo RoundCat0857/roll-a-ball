@@ -39,7 +39,7 @@
 
 5. [アイテム回収の追加](https://unity3d.com/jp/learn/tutorials/projects/hajiuni/creating-collectible-objects?playlist=45986)  
   - Item Objectの追加  
-    Capsuleを選択  
+    Hierarchy: Create -> Capsule  
   - 量産するために  
     - Item Object を Prefab フォルダに保存  
     - Scene View に Drag & Drop  
@@ -59,12 +59,39 @@
       }
     ```  
     引数のhitに接触対象の情報、上記コードではTagがPlayerなら処理  
+
   > タグの設定方法  
   > 対象とするObjectのInspectorよりTagを変更
 
   - 接触時に削除する  
     `Destroy(gameObject)`  
 
+6. [ゲームのUIを追加](https://unity3d.com/jp/learn/tutorials/projects/hajiuni/creating-the-game-ui?playlist=45986)
+  - **全てのUIに共通  
+    Hierarchy: Create -> UI**  
+  - Canvas設定  
+    Hierarchy: Create -> UI -> Canvas  
+    CanvasScaler -> UI Scale Mode を Scale With Screen Size  
+  - Text設定
+    Hierarchy: Create -> UI -> Text  
+    ReactTransform, Text Component をゲームに合うように設定  
+  - GameController の作成  
+    Create Empty   
+    ```
+      public class GameController : MonoBehaviour {
+        // GameController Inspecter から public変数 scoreLabel を指定
+        public UnityEngine.UI.Text scoreLabel;
+        public void Update () {
+          int count = GameObject.FindGameObjectsWithTag("Item").Length;
+          // 指定された scoreLabel の Text に count を格納
+          scoreLabel.text = count.ToString ();
+        }
+      }
+    ```
+    ここでは `scoreLabel` をUnity側で Canvas -> scoreLabel(上で準備したText) に設定  
+  > Tagの追加  
+  > Menu Bar -> ProjectSettings -> Tag And Layers より設定  
+  > これ以降 Inspecter にそのタグが出現、選択可能に
 ***  
 links  
 [Documentation](https://docs.unity3d.com/ja/current/Manual/index.html)  
